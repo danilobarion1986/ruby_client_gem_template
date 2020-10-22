@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module PhisherSecRolesClient
+module ServiceClient
   class FakeResponseParser
     attr_reader :client
 
@@ -10,7 +10,7 @@ module PhisherSecRolesClient
       > You are using the 'FakeResponseParser' class.
       > You should configure the requests' response parser, using the following configurations:
       >
-      > PhisherSecRolesClient.config.requests.response_parser = -> { puts :example }
+      > ServiceClient.config.requests.response_parser = -> { puts :example }
       >
       > You can see more details in the README.
 

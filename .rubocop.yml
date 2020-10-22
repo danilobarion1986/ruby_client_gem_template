@@ -6,7 +6,7 @@ inherit_from: .rubocop_todo.yml
 Style/Documentation:
   Exclude:
     - 'spec/**/*'
-    - 'lib/phisher_sec_roles_client/fake*.rb'
+    - 'lib/service_client/fake*.rb'
 
 Performance/AncestorsInclude:
   Enabled: true

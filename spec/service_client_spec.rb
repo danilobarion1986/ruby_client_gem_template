@@ -2,20 +2,20 @@
 
 require 'spec_helper'
 
-RSpec.describe PhisherSecRolesClient do
+RSpec.describe ServiceClient do
   it 'has a version number' do
-    expect(PhisherSecRolesClient::VERSION).to_not be_nil
+    expect(ServiceClient::VERSION).to_not be_nil
   end
 
   describe 'Configuration' do
-    subject { PhisherSecRolesClient.config }
+    subject { ServiceClient.config }
 
     it 'has the correct configurations' do
       expect(subject.api_key).to be_nil
-      expect(subject.requests.response_parser).to eql PhisherSecRolesClient::FakeResponseParser
+      expect(subject.requests.response_parser).to eql ServiceClient::FakeResponseParser
       expect(subject.cache.timeout).to eql 900
       expect(subject.cache.adapter.name).to eql :fake
-      expect(subject.cache.adapter.client).to be_an_instance_of PhisherSecRolesClient::FakeCacheClient
+      expect(subject.cache.adapter.client).to be_an_instance_of ServiceClient::FakeCacheClient
     end
 
     context 'incorrect configurations' do
@@ -23,7 +23,7 @@ RSpec.describe PhisherSecRolesClient do
         it 'raises InvalidSettingError' do
           expect do
             subject.requests.response_parser = Object.new
-          end.to raise_error(PhisherSecRolesClient::InvalidSettingError,
+          end.to raise_error(ServiceClient::InvalidSettingError,
                              'Value should be an object that responds to .call(response)')
         end
       end
@@ -33,7 +33,7 @@ RSpec.describe PhisherSecRolesClient do
           it 'raises InvalidSettingError' do
             expect do
               subject.cache.timeout = 59
-            end.to raise_error(PhisherSecRolesClient::InvalidSettingError,
+            end.to raise_error(ServiceClient::InvalidSettingError,
                                'Cache timeout should be between 60 and 86.400 seconds.')
           end
         end
@@ -42,7 +42,7 @@ RSpec.describe PhisherSecRolesClient do
           it 'raises InvalidSettingError' do
             expect do
               subject.cache.timeout = 86_401
-            end.to raise_error(PhisherSecRolesClient::InvalidSettingError,
+            end.to raise_error(ServiceClient::InvalidSettingError,
                                'Cache timeout should be between 60 and 86.400 seconds.')
           end
         end
@@ -52,7 +52,7 @@ RSpec.describe PhisherSecRolesClient do
         it 'raises InvalidSettingError' do
           expect do
             subject.cache.adapter.name = :invalid
-          end.to raise_error(PhisherSecRolesClient::InvalidSettingError,
+          end.to raise_error(ServiceClient::InvalidSettingError,
                              %r{Invalid adapter name 'invalid'})
         end
       end
@@ -66,13 +66,13 @@ RSpec.describe PhisherSecRolesClient do
         subject.cache.adapter.name = :rails
         subject.cache.adapter.client = Object
 
-        PhisherSecRolesClient.reset_config
+        ServiceClient.reset_config
 
         expect(subject.api_key).to be_nil
-        expect(subject.requests.response_parser).to eql PhisherSecRolesClient::FakeResponseParser
+        expect(subject.requests.response_parser).to eql ServiceClient::FakeResponseParser
         expect(subject.cache.timeout).to eql 900
         expect(subject.cache.adapter.name).to eql :fake
-        expect(subject.cache.adapter.client).to be_an_instance_of PhisherSecRolesClient::FakeCacheClient
+        expect(subject.cache.adapter.client).to be_an_instance_of ServiceClient::FakeCacheClient
       end
     end
   end

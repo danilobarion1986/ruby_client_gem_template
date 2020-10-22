@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'phisher_sec_roles_client/requests/requests'
+require 'service_client/requests/requests'
 
-module PhisherSecRolesClient
+module ServiceClient
   # Client to interact with PhishER Security Roles Service
   class Client
     def healthcheck(response_parser = nil)

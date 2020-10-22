@@ -2,11 +2,11 @@
 
 lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'phisher_sec_roles_client/version'
+require 'service_client/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'phisher_sec_roles_client'
-  spec.version       = PhisherSecRolesClient::VERSION
+  spec.name          = 'service_client'
+  spec.version       = ServiceClient::VERSION
   spec.authors       = ['Danilo Barion Nogueira']
   spec.email         = ['danilob@knowbe4.com']
 

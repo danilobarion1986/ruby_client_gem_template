@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe PhisherSecRolesClient::Requests::Healthcheck do
+RSpec.describe ServiceClient::Requests::Healthcheck do
   skip 'TBD' do
     describe '#call' do
       it 'WIP' do

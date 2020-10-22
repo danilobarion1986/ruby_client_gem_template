@@ -7,20 +7,20 @@ require 'dry-configurable'
 require 'json'
 require 'typhoeus'
 
-require 'phisher_sec_roles_client/version'
-require 'phisher_sec_roles_client/client'
-%w[cache cache_client response_parser].each { |fake_class| require "phisher_sec_roles_client/fake_#{fake_class}" }
+require 'service_client/version'
+require 'service_client/client'
+%w[cache cache_client response_parser].each { |fake_class| require "service_client/fake_#{fake_class}" }
 %w[rails dalli redis].each { |cache| require "typhoeus/cache/#{cache}" }
 
 # :no-doc:
-module PhisherSecRolesClient
+module ServiceClient
   # https://dry-rb.org/gems/dry-configurable/0.11/
   extend Dry::Configurable
   # Basic error class for wrong settings values
   class InvalidSettingError < ArgumentError; end
 
   CACHE_ADAPTER_OPTIONS = {
-    fake: PhisherSecRolesClient::FakeCache,
+    fake: ServiceClient::FakeCache,
     rails: Typhoeus::Cache::Rails,
     dalli: Typhoeus::Cache::Dalli,
     redis: Typhoeus::Cache::Redis
@@ -45,7 +45,7 @@ module PhisherSecRolesClient
   setting :requests do
     # Lambda to be called to parse the response body. It can be any object that
     # responds to #call, receiving the raw response as the only argument.
-    setting :response_parser, PhisherSecRolesClient::FakeResponseParser do |parser|
+    setting :response_parser, ServiceClient::FakeResponseParser do |parser|
       unless parser.respond_to?(:call)
         raise InvalidSettingError, 'Value should be an object that responds to .call(response)'
       end
@@ -68,7 +68,7 @@ module PhisherSecRolesClient
     # Cache adapter that will be used by the http client to cache the requests
     setting :adapter do
       # Adapter client is the instance of the client that will be used by the cache class to store its state
-      setting :client, PhisherSecRolesClient::FakeCacheClient.new
+      setting :client, ServiceClient::FakeCacheClient.new
 
       # Adapter name from what the cache class will be obtained
       setting :name, :fake do |value|

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module PhisherSecRolesClient
+module ServiceClient
   class FakeCacheClient
   end
 end

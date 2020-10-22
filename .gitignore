@@ -12,4 +12,4 @@
 .ruby-version
 .rbenv-gemsets
 
-phisher_sec_roles_client-*.gem
+service_client-*.gem

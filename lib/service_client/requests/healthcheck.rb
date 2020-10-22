@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module PhisherSecRolesClient
+module ServiceClient
   module Requests
     # Request to verify the health of the service
     class Healthcheck < RequestBase
@@ -11,7 +11,7 @@ module PhisherSecRolesClient
       end
 
       def call(response_parser = nil)
-        response_parser ||= PhisherSecRolesClient.config.requests.response_parser
+        response_parser ||= ServiceClient.config.requests.response_parser
         request = Typhoeus::Request.new("#{SERVICE_BASE_URL}/healthcheck", options)
 
         @response_raw = execute(request)

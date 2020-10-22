@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module PhisherSecRolesClient
+module ServiceClient
   class FakeCache
     attr_reader :client
 
@@ -10,8 +10,8 @@ module PhisherSecRolesClient
       >  You are using the 'FakeCache' class.
       >  You should configure the cache adapter, using the following configurations:
       >
-      >  PhisherSecRolesClient.config.cache.adapter.name = :rails
-      >  PhisherSecRolesClient.config.cache.adapter.client = Rails.cache
+      >  ServiceClient.config.cache.adapter.name = :rails
+      >  ServiceClient.config.cache.adapter.client = Rails.cache
       >
       >  You can see all available adapters in the README.
 

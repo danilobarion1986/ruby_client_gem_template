@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe PhisherSecRolesClient::Requests::RequestBase do
+RSpec.describe ServiceClient::Requests::RequestBase do
   let(:account_id) { 123 }
   let(:user_id) { 456 }
   let(:access_token) { 'test-token' }
@@ -11,7 +11,7 @@ RSpec.describe PhisherSecRolesClient::Requests::RequestBase do
 
   describe '.new' do
     it 'sets instance variables values correctly' do
-      PhisherSecRolesClient.config.api_key = api_key
+      ServiceClient.config.api_key = api_key
 
       instance = described_class.new(account_id: account_id, user_id: user_id, access_token: access_token, cache: cache)
 
@@ -22,12 +22,12 @@ RSpec.describe PhisherSecRolesClient::Requests::RequestBase do
       expect(instance.api_key).to eql api_key
     end
 
-    after { PhisherSecRolesClient.reset_config }
+    after { ServiceClient.reset_config }
   end
 
   describe '#headers' do
     it 'returns the correct headers' do
-      PhisherSecRolesClient.config.api_key = api_key
+      ServiceClient.config.api_key = api_key
 
       instance = described_class.new(account_id: account_id,
                                      user_id: user_id,
@@ -41,6 +41,6 @@ RSpec.describe PhisherSecRolesClient::Requests::RequestBase do
       )
     end
 
-    after { PhisherSecRolesClient.reset_config }
+    after { ServiceClient.reset_config }
   end
 end

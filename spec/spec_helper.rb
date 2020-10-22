@@ -4,7 +4,7 @@ require 'simplecov'
 SimpleCov.start
 
 require 'bundler/setup'
-require 'phisher_sec_roles_client'
+require 'service_client'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
