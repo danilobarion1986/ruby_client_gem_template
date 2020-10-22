@@ -8,10 +8,10 @@ Gem::Specification.new do |spec|
   spec.name          = 'service_client'
   spec.version       = ServiceClient::VERSION
   spec.authors       = ['Danilo Barion Nogueira']
-  spec.email         = ['danilob@knowbe4.com']
+  spec.email         = ['danilo.barion1986@live.com']
 
-  spec.summary       = 'Client for PhishER Security Roles Service.'
-  spec.description   = 'Client for PhishER Security Roles Service.'
+  spec.summary       = 'Generic Ruby gem client for HTTP Services/APIs.'
+  spec.description   = 'Generic Ruby gem client for HTTP Services/APIs.'
 
   spec.files         = Dir.glob(File.join(__FILE__, '**', '*_spec.rb'))
   spec.require_paths = ['lib']

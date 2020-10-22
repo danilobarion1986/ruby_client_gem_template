@@ -3,7 +3,7 @@
 require 'service_client/requests/requests'
 
 module ServiceClient
-  # Client to interact with PhishER Security Roles Service
+  # Client to interact with the service
   class Client
     def healthcheck(response_parser = nil)
       Requests::Healthcheck.new(response_parser).call

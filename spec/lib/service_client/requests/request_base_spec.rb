@@ -35,9 +35,9 @@ RSpec.describe ServiceClient::Requests::RequestBase do
                                      cache: cache)
 
       expect(instance.headers).to eql(
-        { 'User-Agent' => 'PhishER - Security Roles Client',
+        { 'User-Agent' => 'Service Client',
           'Accept' => 'application/json',
-          'X-PhishER-Api-Key' => api_key }
+          'X-Service-Api-Key' => api_key }
       )
     end
 

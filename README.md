@@ -1,13 +1,13 @@
-# PhishER Security Roles Client
+# Service Client
 
-This is the client for the PhishER Security Roles service.
+This is a generic ruby gem client for HTTP Services/APIs.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'service_client', git: 'https://gitlab.internal.knowbe4.com/rubygems/service_client.git'
+gem 'service_client'
 ```
 
 And then execute:
@@ -26,7 +26,7 @@ _These usage instructions are some ideas of how the client syntax would look lik
 In order to make authorized requests to the service, you need to set the client's API Key using the config:
 
 ```ruby
-ServiceClient.config.api_key = ENV['PHISHER_SEC_ROLES_SERVICE_KEY']
+ServiceClient.config.api_key = ENV['SERVICE_KEY']
 ```
 
 After that, you can initialize the client to interact with the service:
@@ -59,21 +59,7 @@ token = client.healthcheck
 #     >
 ```
 
-### Get user permissions:
-
-__WIP__
-
-Using the `user_permissions` method you can obtain the user permissions in a JWT-encoded token, like this:
-
-```ruby
-user = client.user_permissions(account_id: '4bbb15cf-41e7-45e8-8e2d-aac6704f821c',
-                               user_id: '3dd47d9e-2243-4c27-980d-67095d7f3129',
-                               access_token: token)
-# => #<ServiceClient::User 0x00007ffe3600dde0
-#       @account_id='4bbb15cf-41e7-45e8-8e2d-aac6704f821c',
-#       @user_id='3dd47d9e-2243-4c27-980d-67095d7f3129'
-#       @permissions='eyJhbGciOiJQUzI1NiJ9.eyJkYXRhIjoidGVzdCJ9.KEmqagMUHM-NcmXo6818ZazVTIAkn9qU9KQFT1c5Iq91n0KRpAI84jj4ZCdkysDlWokFs3Dmn4MhcXP03oJKLFgnoPL40_Wgg9iFr0jnIVvnMUp1kp2RFUbL0jqExGTRA3LdAhuvw6ZByGD1bkcWjDXygjQw-hxILrT1bENjdr0JhFd-cB0-ps5SB0mwhFNcUw-OM3Uu30B1-mlFaelUY8jHJYKwLTZPNxHzndt8RGXF8iZLp7dGb06HSCKMcVzhASGMH4ZdFystRe2hh31cwcvnl-Eo_D4cdwmpN3Abhk_8rkxawQJR3duh8HNKc4AyFPo7SabEaSu2gLnLfN3yfg'
-```
+Add more instructions as you need.
 
 ### Caching
 
@@ -93,16 +79,7 @@ The available cache adapters are: fake (_default_), rails, dalli, and redis.
 You can pass the `cache` keyword argument as `false` to force an uncached request:
 
 ```ruby
-client.user_permissions(account_id: '4bbb15cf-41e7-45e8-8e2d-aac6704f821c',
-                        user_id: '3dd47d9e-2243-4c27-980d-67095d7f3129',
-                        access_token: token,
-                        cache: false)
-```
-
-You can define the API Key on the gem configuration too, so you don't need to pass it when initializing the client:
-
-```ruby
-ServiceClient.config.api_key = ENV['PHISHER_SEC_ROLES_SERVICE_KEY']
+client.healthcheck(access_token: token, cache: false)
 ```
 
 ## Code Quality and Coverage
@@ -122,4 +99,4 @@ and add a new git tag with the updated gem version.
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/service_client.
+Bug reports and pull requests are welcome on GitHub at https://github.com/danilobarion1986/ruby_client_gem_template.
